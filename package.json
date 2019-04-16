@@ -4,7 +4,7 @@
   "description": "An infinite scroller for react",
   "author": "xynes",
   "license": "MIT",
-  "repository": "xynes/react-scroll-to-fetch",
+  "repository": "xynes-git/react-scroll-to-fetch",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",
