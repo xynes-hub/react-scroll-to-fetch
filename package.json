@@ -5,6 +5,7 @@
   "author": "xynes",
   "license": "MIT",
   "repository": "xynes-git/react-scroll-to-fetch",
+  "keywords": ["React","Scroller","scroll-to-fetch","infinite","infinite-scroller"],
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",
