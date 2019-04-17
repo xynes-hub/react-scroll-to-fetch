@@ -8,7 +8,8 @@ export default class ScrollToFetch extends Component {
     loader:PropTypes.element,
     successMessage:PropTypes.element,
     fetch:PropTypes.func.isRequired,
-    scrollParent:PropTypes.string
+    scrollParent:PropTypes.string,
+    currentPage:PropTypes.number
   }
   state={
     fetching:false,
@@ -20,10 +21,15 @@ export default class ScrollToFetch extends Component {
     }else{
       document.getElementById(this.props.scrollParent).addEventListener('scroll',this.trackBottom);
     }
-    
-    this.setState({fetching:true});
-    await this.props.fetch(this.state.page);
-    this.setState({fetching:false,page:this.state.page+1})
+    if(!this.props.currentPage){
+      this.setState({fetching:true});
+      await this.props.fetch(this.state.page);
+      this.setState({fetching:false,page:this.state.page+1})
+    }else{
+      this.setState({fetching:true});
+      await this.props.fetch(this.props.currentPage+1);
+      this.setState({fetching:false})
+    }
   }
   componentWillUnmount(){
     if(!this.props.scrollParent){
@@ -48,10 +54,15 @@ export default class ScrollToFetch extends Component {
     // console.log('top',b.top,'viewport',document.documentElement.clientHeight);
     if(bottomY-viewportHeight <=viewportHeight/10){
       //bottom inside viewport
-      if(!this.state.fetching){
+      if(!this.state.fetching){if(!this.props.currentPage){
         this.setState({fetching:true});
         await this.props.fetch(this.state.page);
         this.setState({fetching:false,page:this.state.page+1})
+      }else{
+        this.setState({fetching:true});
+        await this.props.fetch(this.props.currentPage+1);
+        this.setState({fetching:false})
+      }
       }
       
     }
