@@ -3,6 +3,19 @@ import PropTypes from 'prop-types'
 require("babel-core/register");
 require("babel-polyfill");
 export default class ScrollToFetch extends Component {
+  constructor(){
+    super();
+    this.uniqueId();
+  }
+  uniqueId=()=>{
+    var rand=Math.floor(Math.random()*1000).toString()+Date.now();
+    var id=rand+"_scrollToFetch_bottom"
+    if(document.getElementById(id)===null){
+      this.bottom_id=id;
+    }else{
+      this.uniqueId()
+    }
+  }
   static propTypes = {
     finished: PropTypes.bool.isRequired,
     loader:PropTypes.element,
@@ -39,19 +52,24 @@ export default class ScrollToFetch extends Component {
     }
   } 
   trackBottom= async ()=>{
-    console.log("scroll event")
+    // console.log("scroll event")
     if(!this.props.finished){
-    var b=document.getElementById("scrollToFetch_bottom");
+    var b=document.getElementById(this.bottom_id);
     b=b.getBoundingClientRect();
-    const bottomY=b.top;
+    let bottomY=b.top;
     let viewportHeight=0;
     if(!this.props.scrollParent){
       viewportHeight=document.documentElement.clientHeight;
     }else{
-      viewportHeight=document.getElementById(this.props.scrollParent).clientHeight;
+      var scPrnt=document.getElementById(this.props.scrollParent)
+      viewportHeight=scPrnt.clientHeight;
+      var scPrntTop=scPrnt.getBoundingClientRect().top;
+      console.log("viewport",viewportHeight,"bottom",bottomY,"scrollparent",scPrntTop);
+      bottomY=bottomY-scPrntTop;
     }
     
     // console.log('top',b.top,'viewport',document.documentElement.clientHeight);
+    // console.log(viewportHeight)
     if(bottomY-viewportHeight <=viewportHeight/10){
       //bottom inside viewport
       if(!this.state.fetching){if(!this.props.currentPage){
@@ -70,6 +88,7 @@ export default class ScrollToFetch extends Component {
   }
 
   render() {
+    console.log(this.bottom_id);
     let {finished,successMessage,loader,children}=this.props;
     if(!loader){
       loader=<div>loading...</div>
@@ -78,9 +97,9 @@ export default class ScrollToFetch extends Component {
       successMessage=<div style={{textAlign:'center'}}>No more data to load</div>
     }
     return (
-      <div id="scrollToFetch_container" style={{margin:20}}>
+      <div style={{margin:20}}>
         {children}
-        <div id="scrollToFetch_bottom"></div>
+        <div id={this.bottom_id}></div>
         {finished ? successMessage:loader}
         {}
       </div>

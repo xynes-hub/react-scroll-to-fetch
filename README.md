@@ -28,4 +28,4 @@ class Example extends Component {
 
 ## License
 
-MIT © [xynes](https://github.com/xynes)
+MIT © [xynes](https://xynes.com)

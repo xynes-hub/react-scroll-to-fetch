@@ -1,0 +1,11 @@
+.container{
+    display: inline;
+    margin: 20px
+}
+.item{
+    margin: 5px;
+    padding:5px;
+    background-color: teal;
+    text-align: center;
+    color: aliceblue
+}
