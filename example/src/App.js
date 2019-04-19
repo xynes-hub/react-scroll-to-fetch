@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import './App.css';
-import ScrollToFetch from 'react-scroll-to-fetch'
-
+import ScrollToFetch from 'react-scroll-to-fetch';
 export default class App extends Component {
   state={
     tmp:[],
@@ -64,7 +63,7 @@ export default class App extends Component {
         <ScrollToFetch
         fetch={this.fetch2} 
         finished={this.state.finished2}
-        loader={<div style={{textAlign:'center'}}>Loading...</div>}
+        // loader={<div style={{textAlign:'center'}}>Loading...</div>}
         successMessage={<div style={{textAlign:'center'}}>No more data to load</div>}
         scrollParent="scroll"
         >{this.state.tmp2.map((v,i)=>{

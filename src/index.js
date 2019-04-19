@@ -91,7 +91,7 @@ export default class ScrollToFetch extends Component {
     console.log(this.bottom_id);
     let {finished,successMessage,loader,children}=this.props;
     if(!loader){
-      loader=<div>loading...</div>
+      loader=<div style={{textAlign:'center'}}>Loading...</div>
     }
     if(!successMessage){
       successMessage=<div style={{textAlign:'center'}}>No more data to load</div>
@@ -99,9 +99,8 @@ export default class ScrollToFetch extends Component {
     return (
       <div style={{margin:20}}>
         {children}
-        <div id={this.bottom_id}></div>
         {finished ? successMessage:loader}
-        {}
+        <div id={this.bottom_id}></div>
       </div>
     )
   }
