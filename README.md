@@ -32,7 +32,7 @@ class Example extends Component {
 ```
 > The `_fetch` function recieves one parameter , i.e. `page` and should return a `Promise`.Or if you declare the `_fetch` function as `async` it will work.
 ### An example of the `_fetch` function
-```javaScript
+```js
 _fetch=(page)=>{
     return new Promise((resolve,reject)=>{
         axios.get("https://domain.tdl/api/getlist?page="+page)
