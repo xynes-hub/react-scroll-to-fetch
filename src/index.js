@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-require("babel-core/register");
+// require("babel-core/register");
 require("babel-polyfill");
 export default class ScrollToFetch extends Component {
   constructor(){
