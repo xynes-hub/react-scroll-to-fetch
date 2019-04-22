@@ -22,7 +22,9 @@ export default class ScrollToFetch extends Component {
     successMessage:PropTypes.element,
     fetch:PropTypes.func.isRequired,
     scrollParent:PropTypes.string,
-    currentPage:PropTypes.number
+    currentPage:PropTypes.number,
+    className:PropTypes.string,
+    style:PropTypes.object
   }
   state={
     fetching:false,
@@ -88,6 +90,7 @@ export default class ScrollToFetch extends Component {
   }
 
   render() {
+    const {className,style}=this.props;
     console.log(this.bottom_id);
     let {finished,successMessage,loader,children}=this.props;
     if(!loader){
@@ -97,7 +100,7 @@ export default class ScrollToFetch extends Component {
       successMessage=<div style={{textAlign:'center'}}>No more data to load</div>
     }
     return (
-      <div style={{margin:20}}>
+      <div style={style || {}} className={className || ""}>
         {children}
         {finished ? successMessage:loader}
         <div id={this.bottom_id}></div>
