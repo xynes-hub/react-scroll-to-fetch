@@ -77,6 +77,8 @@ _fetch=async (page)=>{
 |successMessage|`false`| `element`| `<div> No more data to load` | A message to show when fetching is complete, i.e. `finished` prop is set to `true`.|
 |scrollParent|`false`| `string` | | `id` of the **scrollable** `div`. If you want `ScrollToFetch` to listen to `window` scroll events rather than any parent `div` then do not use this prop.|
 | currentPage | `false` | `number` | | To manually controll the page no. Click [here](#manually-controll-the-page-number) for more information.|
+| className | `false` | `string` | | pass className as a prop |
+| style | `false` | `object` | | pass style as a prop |
 ### Manually Controll the Page Number :
 Generally if the `ScrollToFetch` Component gets unmounted, the page no will be reset to zero. Now if you use a global state for the *fetched list* then there will be problem. To overcome this you can controll the page number with `currentPage` props. Here is an example.
 ```jsx
