@@ -22,6 +22,7 @@ class Example extends Component {
       <ScrollToFetch
         fetch={this._fetch} 
         finished={this.state.finished}
+        initialLoad={true}
         loader={<div style={{textAlign:'center'}}>Loading...</div>}
         successMessage={<div style={{textAlign:'center'}}>No more data to load</div>}
         >{//You dynamic Component that is updated by the fetch function}
@@ -72,6 +73,7 @@ _fetch=async (page)=>{
 | Name        | Required     | Type          | Default    | Description|
 |:----        |:----     |:----          |:----       |:----|
 |fetch |`true`| `func` | |A callback to retrive data from the server.  |
+| initialLoad| `true`|`bool`| | A flag to tell ScrollTofetch if it should fetch the first page without scrolling|
 |finished |`true`| `bool` | false | No more data will be fetched from the server when set to `true`.|
 |loader|`false` | `element` | `<div> Loading... </div>` | A message to show on the bottom of the list. You can replace it with you beautiful loading animation.
 |successMessage|`false`| `element`| `<div> No more data to load` | A message to show when fetching is complete, i.e. `finished` prop is set to `true`.|

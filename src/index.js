@@ -24,7 +24,8 @@ export default class ScrollToFetch extends Component {
     scrollParent:PropTypes.string,
     currentPage:PropTypes.number,
     className:PropTypes.string,
-    style:PropTypes.object
+    style:PropTypes.object,
+    initialLoad:PropTypes.bool
   }
   state={
     fetching:false,
@@ -36,6 +37,9 @@ export default class ScrollToFetch extends Component {
     }else{
       document.getElementById(this.props.scrollParent).addEventListener('scroll',this.trackBottom);
     }
+    if(!this.props.initialLoad){
+    
+  }else{
     if(!this.props.currentPage){
       this.setState({fetching:true});
       await this.props.fetch(this.state.page);
@@ -45,6 +49,7 @@ export default class ScrollToFetch extends Component {
       await this.props.fetch(this.props.currentPage+1);
       this.setState({fetching:false})
     }
+  }
   }
   componentWillUnmount(){
     if(!this.props.scrollParent){
@@ -66,7 +71,7 @@ export default class ScrollToFetch extends Component {
       var scPrnt=document.getElementById(this.props.scrollParent)
       viewportHeight=scPrnt.clientHeight;
       var scPrntTop=scPrnt.getBoundingClientRect().top;
-      console.log("viewport",viewportHeight,"bottom",bottomY,"scrollparent",scPrntTop);
+      // console.log("viewport",viewportHeight,"bottom",bottomY,"scrollparent",scPrntTop);
       bottomY=bottomY-scPrntTop;
     }
     
@@ -91,7 +96,7 @@ export default class ScrollToFetch extends Component {
 
   render() {
     const {className,style}=this.props;
-    console.log(this.bottom_id);
+    // console.log(this.bottom_id);
     let {finished,successMessage,loader,children}=this.props;
     if(!loader){
       loader=<div style={{textAlign:'center'}}>Loading...</div>
