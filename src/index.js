@@ -38,18 +38,21 @@ export default class ScrollToFetch extends Component {
       document.getElementById(this.props.scrollParent).addEventListener('scroll',this.trackBottom);
     }
     if(!this.props.initialLoad){
-    
-  }else{
-    if(!this.props.currentPage){
-      this.setState({fetching:true});
-      await this.props.fetch(this.state.page);
-      this.setState({fetching:false,page:this.state.page+1})
+      if(this.props.debug){
+        console.log("initial fetch is turned Off")
+      }
     }else{
-      this.setState({fetching:true});
-      await this.props.fetch(this.props.currentPage+1);
-      this.setState({fetching:false})
+      console.log("initial fetch is turned on")
+      if(!this.props.currentPage){
+        this.setState({fetching:true});
+        await this.props.fetch(this.state.page);
+        this.setState({fetching:false,page:this.state.page+1})
+      }else{
+        this.setState({fetching:true});
+        await this.props.fetch(this.props.currentPage+1);
+        this.setState({fetching:false})
+      }
     }
-  }
   }
   componentWillUnmount(){
     if(!this.props.scrollParent){
