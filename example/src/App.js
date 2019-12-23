@@ -47,7 +47,7 @@ export default class App extends Component {
     return (
       <div className="container" style={{margin:20}}>
       <div style={{float:'left',width:'49%',backgroundColor:'#eeeeee'}}>
-      <h1 style={{textAlign:'center'}}>Normal Page Scroll</h1>
+      <h1 style={{textAlign:'center'}}>1) Normal Page Scroll</h1>
         <ScrollToFetch
         fetch={this.fetch} 
         finished={this.state.finished}
@@ -60,7 +60,7 @@ export default class App extends Component {
         })}</ScrollToFetch>
       </div>
       <div style={{position:'fixed',right:0,top:100 ,height:300,width:'50%',backgroundColor:'#eeeeee',overflowY:'scroll'}} id="scroll">
-      <h1 style={{textAlign:'center'}}>Scrollable Div</h1>
+      <h1 style={{textAlign:'center'}}>2) Scrollable Div</h1>
         <ScrollToFetch
         fetch={this.fetch2} 
         finished={this.state.finished2}
