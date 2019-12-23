@@ -51,6 +51,7 @@ export default class App extends Component {
         <ScrollToFetch
         fetch={this.fetch} 
         finished={this.state.finished}
+        initialLoad={true}
         loader={<div style={{textAlign:'center'}}>Loading...</div>}
         successMessage={<div style={{textAlign:'center'}}>No more data to load</div>}
         // scrollParent="scroll"
@@ -63,6 +64,7 @@ export default class App extends Component {
         <ScrollToFetch
         fetch={this.fetch2} 
         finished={this.state.finished2}
+        initialLoad={true}
         // loader={<div style={{textAlign:'center'}}>Loading...</div>}
         successMessage={<div style={{textAlign:'center'}}>No more data to load</div>}
         scrollParent="scroll"

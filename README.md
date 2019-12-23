@@ -3,7 +3,7 @@
 > Fetch Data from server as you scroll down with a simple lightweight React Component. Saves you all the troubles from designing a pagination system. This lightweight library works both with `window` scroll event and scrollable div elements.
 
 [![NPM](https://img.shields.io/npm/v/react-scroll-to-fetch.svg)](https://www.npmjs.com/package/react-scroll-to-fetch) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
-## [Demo](https://xynes-git.github.io/react-scroll-to-fetch/)
+## [Demo](https://xynes-hub.github.io/react-scroll-to-fetch/)
 ## Install
 
 ```bash
